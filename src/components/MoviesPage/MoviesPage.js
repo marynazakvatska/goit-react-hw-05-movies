@@ -35,6 +35,7 @@ export default function MoviesPage() {
 
 
   const handleSubmit = query => {
+
     if (!query || query === searchQuery) return;
 
     setMovies([]);
@@ -42,16 +43,17 @@ export default function MoviesPage() {
     history.push({
       ...location,
       search: `query=${query}`,
-    });
+    }); 
   };
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
+      
       <ul>
         {movies &&
           movies.map(movie => (
             <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+              <Link to={{ pathname: `/movies/${movie.id}`, state:{from:location}}}>{movie.title}</Link>
             </li>
           ))}
       </ul>

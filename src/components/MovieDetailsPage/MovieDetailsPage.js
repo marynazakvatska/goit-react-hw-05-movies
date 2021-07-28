@@ -1,11 +1,11 @@
 /* https://developers.themoviedb.org/3/movies/get-movie-details - 
 запрос полной информации о фильме для страницы кинофильма. */
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams,  useHistory} from "react-router-dom";
 import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import { NavLink } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+
 import css from './MovieDetailsPage.module.css';
 import Reviews from '../Reviews/Reviews'
 
@@ -16,6 +16,7 @@ export default function MovieDetailsPage() {
     console.log(movieId)
     const [movie, setMovie] = useState(null);
     const history = useHistory();
+  const location = useLocation(); 
   
 
     useEffect(() => {
@@ -27,8 +28,9 @@ export default function MovieDetailsPage() {
     .catch(error => error) 
  }, [movieId])
 
-     const onBack = () => {
-    history.goBack();
+    const onBack = () => {
+         console.log(location)
+         history.push(location?.state?.from ?? '/')
   };
     
           

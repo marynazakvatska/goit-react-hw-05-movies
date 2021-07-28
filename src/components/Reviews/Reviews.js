@@ -19,22 +19,23 @@ const Reviews = () => {
      const API_KEY = "edcdf711db36953031d9e29f76dede63";
     
       fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${API_KEY}`)
-        .then(response => response.json())
+          .then(response => response.json())
+     
         .then(data=>data.results).then(movies=>setMovies(movies))
-          .catch(error => console.log(error))
-      .finally(<h2>'We dont have  any review for this movie'</h2>)
+    
  }, [])
  
-  
+  console.log(movies)
   return (
     <div>
-     
-      <ul>
-        {movies && movies.map(movie => (
-          <li key={movie.id}>
-         {movie.content}
-            </li>))}
-      </ul>
+          {!movies === [] ?
+              <ul> 
+                  {movies.map(movie => (
+                      <li key={movie.id}>
+                          {movie.content}
+                      </li>))}
+              </ul> : <p>No reviews for this movie  </p>
+          }
 
 
       </div>)

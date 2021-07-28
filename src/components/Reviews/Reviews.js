@@ -21,17 +21,18 @@ const Reviews = () => {
       fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${API_KEY}`)
         .then(response => response.json())
         .then(data=>data.results).then(movies=>setMovies(movies))
-  
+          .catch(error => console.log(error))
+      .finally(<h2>'We dont have  any review for this movie'</h2>)
  }, [])
  
   
   return (
     <div>
-      <h1>Reviews</h1>
+     
       <ul>
         {movies && movies.map(movie => (
           <li key={movie.id}>
-            <NavLink to={`${url}/${movieId}/reviews`}>{movie.content}</NavLink>
+         {movie.content}
             </li>))}
       </ul>
 

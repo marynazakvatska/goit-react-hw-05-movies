@@ -26,7 +26,7 @@ const HomePage = () => {
   
   return (
     <div>
-      <h1>Это домашняя страница</h1>
+      <h1>Trending today</h1>
       <ul>
         {movies && movies.map(movie => (
           <li key={movie.id}>

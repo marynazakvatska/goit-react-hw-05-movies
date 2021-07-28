@@ -15,8 +15,13 @@ img {
 .navLink {
   font-size: 20px;
   color: currentColor;
+  text-decoration: none;
+  margin-right: 20px;
+  padding-top: 40px;
+  margin-bottom: 40px;
 }
 
 .navLinkactive {
   color: palevioletred;
+  text-decoration: underline;
 }

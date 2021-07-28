@@ -5,35 +5,39 @@ import { useParams } from "react-router-dom";
 import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
 import Cast from '../Cast/Cast';
 import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import css from './MovieDetailsPage.module.css';
 import Reviews from '../Reviews/Reviews'
 
 
 export default function MovieDetailsPage() {
       const { url } = useRouteMatch();
     const { movieId } = useParams();
-    console.log({movieId})
+    console.log(movieId)
     const [movie, setMovie] = useState(null);
+    const history = useHistory();
   
 
     useEffect(() => {
 
         const API_KEY = "edcdf711db36953031d9e29f76dede63";
        
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`)
-     
-            .then(response => response.json())
-        .then(data => data.results)
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`).then(response => response.json())
         .then(movie => setMovie(movie))
-  
+    .catch(error => error) 
  }, [movieId])
-           
+
+     const onBack = () => {
+    history.goBack();
+  };
+    
           
         return (
-    <>
+            <>
+          <button type="button" onClick={onBack}>Go back</button> 
       {movie && (
-                    <div>
-                  {/*     <NavLink exact to='/'  className={css.navLink} activeClassName={css.navLinkactive} >
-          <button type="button" >Go back</button> </NavLink> */}
+                    <div >
+                 
                         
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -49,22 +53,29 @@ export default function MovieDetailsPage() {
           <ul>
             {movie.genres &&
               movie.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
-          </ul>
+                        </ul>
+               <hr />
           <div>
-            <p>Additional information</p>
-            <Link to={`${url}/cast`}>Cast</Link>
-            <Link to={`${url}/reviews`}>Reviews</Link>
-          </div>
+                            <p>Additional information</p>
+                            <ul>
+            
+             <li><NavLink to={`${url}/cast`} className={css.navLink} activeClassName={css.navLinkactive}>Cast</NavLink></li>
+              <li><NavLink to={`${url}/reviews`} className={css.navLink} activeClassName={css.navLinkactive}>Reviews</NavLink></li>
+                            </ul>
+                      <hr />   
+                        </div>
+       
           <Switch>
             <Route path="/movies/:movieId/cast">
-              <Cast />
+             <Cast />
             </Route>
             <Route path="/movies/:movieId/reviews">
               <Reviews />
             </Route>
           </Switch>
         </div>
-      )}
+                )}
+               
     </>
   );
 

@@ -27,14 +27,7 @@ function App() {
 <MovieDetailsPage />
       </Route>
 
-      {/*  <Route exact path='/movies/:movieId/cast' >
-<Cast />
-      </Route>
-
-       <Route  exact path='/movies/:movieId/reviews'>
-<Reviews />
-      </Route> */}
-
+      
         <Route>
 <NotFound />
       </Route>
@@ -46,4 +39,3 @@ function App() {
 export default App;
 
 
-/* API Key: edcdf711db36953031d9e29f76dede63 */

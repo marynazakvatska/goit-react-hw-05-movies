@@ -6,7 +6,8 @@ const Navigation = () => (
      
     <NavLink exact to='/' className={css.navLink} activeClassName={css.navLinkactive}>Home</NavLink>
         <NavLink  to='/movies' className={css.navLink} activeClassName={css.navLinkactive}>Movies</NavLink>
-       
-    </nav>
+        <hr />   
+  </nav>
+  
 )
 export default Navigation;

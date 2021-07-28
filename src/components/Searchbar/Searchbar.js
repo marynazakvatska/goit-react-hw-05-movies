@@ -20,8 +20,8 @@ export default function SearchBar({ onSubmit }) {
   };
 
   return (
-    <header className={s.Searchbar}>
-      <form className={s.SearchForm} onSubmit={handleSubmit}>
+    <header className={s.searchbar}>
+      <form className={s.searchForm} onSubmit={handleSubmit}>
        
 
         <input
@@ -32,8 +32,8 @@ export default function SearchBar({ onSubmit }) {
           placeholder="Search Movies"
               />
                
-              <button type="submit" className={s.SearchFormButton}>
-          <span className={s.SearchFormButtonLabel}></span>
+              <button type="submit" className={s.searchFormButton}>Search
+   
         </button>
       </form>
     </header>

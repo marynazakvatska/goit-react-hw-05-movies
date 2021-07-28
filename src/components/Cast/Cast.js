@@ -21,26 +21,17 @@ const Cast = () => {
     
       fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`)
         .then(response => response.json())
-        .then(data=>data.cast).then(cast=>setActors(cast))
-  
+          .then(data => data.cast).then(cast => setActors(cast))
+       .catch(error => error)
  }, [movieId])
  
   
   return (
-   /*  <div>
-      <h1>Cast</h1>
-      <ul>
-        {movies && movies.map(movie => (
-          <li key={movie.id}>
-            <NavLink to={`${url}/${movieId}/cast`}>{movie.cast.name}</NavLink>
-            </li>))}
-      </ul>
-
-
-      </div> */
+  
       
       
-       <div>
+      <div>
+         
       {actors && (
         <ul>
           {actors.map(actor => (

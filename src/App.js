@@ -1,19 +1,20 @@
+import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import css from './App.css';
-/* import AppBar from './components/AppBar/AppBar'; */
-import Container from './components/Container/Container';
-import MoviesPage from './components/MoviesPage/MoviesPage';
-import HomePage from './components/HomePage/HomePage';
-import MovieDetailsPage from './components/MovieDetailsPage/MovieDetailsPage';
+import AppBar from './components/AppBar/AppBar';
+import Container from './components/Container/Container'; 
 
-import NotFound from './components/NotFound/NotFound';
-import Navigation from './components/Navigation/Navigation';
+const MoviesPage = lazy(() => import('./components/MoviesPage/MoviesPage'));
+const HomePage = lazy(() => import('./components/HomePage/HomePage'));
+const MovieDetailsPage = lazy(() => import('./components/MovieDetailsPage/MovieDetailsPage'));
+const NotFound = lazy(() => import('./components/NotFound/NotFound'));
 
-function App() {
+
+export default function App() {
   return (
    <Container> 
-      {/* <AppBar /> */}
-        <Navigation/>
+      <AppBar />
+
+ <Suspense fallback={<h1>ЗАГРУЖАЕМ...</h1>} >
 <Switch>
       <Route path='/' exact  >
 <HomePage/>
@@ -31,11 +32,11 @@ function App() {
         <Route>
 <NotFound />
       </Route>
-</Switch>
+    </Switch>
+  </Suspense>
  </Container>
   );
 }
 
-export default App;
 
 

@@ -2,9 +2,10 @@
 запрос полной информации о фильме для страницы кинофильма. */
 import { useState, useEffect } from "react";
 import { useLocation, useParams,  useHistory} from "react-router-dom";
-import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch, NavLink} from 'react-router-dom';
 import Cast from '../Cast/Cast';
-import { NavLink } from 'react-router-dom';
+import PropTypes from "prop-types";
+
 
 import css from './MovieDetailsPage.module.css';
 import Reviews from '../Reviews/Reviews'
@@ -30,7 +31,7 @@ export default function MovieDetailsPage() {
 
     const onBack = () => {
          console.log(location)
-         history.push(location?.state?.from ?? '/')
+         history.push(location.state?.from ?? '/')
   };
     
           

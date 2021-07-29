@@ -3,7 +3,7 @@
 
 import {useState, useEffect} from "react";
 import React, { useLayoutEffect } from 'react';
-import { NavLink, useRouteMatch } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const Reviews = () => {

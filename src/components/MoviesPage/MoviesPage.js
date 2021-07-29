@@ -5,11 +5,12 @@
 
 
 import {useState, useEffect} from "react";
-import React, { useLayoutEffect } from 'react';
-import { Link, useRouteMatch } from "react-router-dom";
+import React from 'react';
+import { Link} from "react-router-dom";
 import { useHistory, useLocation } from 'react-router-dom';
-import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import SearchBar from "../Searchbar/Searchbar";
+import HomePage from "../HomePage/HomePage";
 
  
 
@@ -35,7 +36,7 @@ export default function MoviesPage() {
 
 
   const handleSubmit = query => {
-
+console.log(location)
     if (!query || query === searchQuery) return;
 
     setMovies([]);
@@ -61,3 +62,8 @@ export default function MoviesPage() {
   );
 
 }
+
+HomePage.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  
+};

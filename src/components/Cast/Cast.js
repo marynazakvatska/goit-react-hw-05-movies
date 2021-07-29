@@ -3,13 +3,11 @@
 о актёрском составе для страницы кинофильма. */
 
 import {useState, useEffect} from "react";
-import React, { useLayoutEffect } from 'react';
-import { NavLink, useRouteMatch } from "react-router-dom";
+import React from 'react';
 import { useParams } from "react-router-dom";
 
 const Cast = () => {
   const [actors, setActors] = useState([]);
-    const { url } = useRouteMatch();
      const { movieId } = useParams();
 
   

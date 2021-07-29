@@ -31,7 +31,7 @@ export default function MovieDetailsPage() {
 
     const onBack = () => {
          console.log(location)
-         history.push(location.state?.from ?? '/')
+         history.push(location?.state?.from ?? '/')
   };
     
           

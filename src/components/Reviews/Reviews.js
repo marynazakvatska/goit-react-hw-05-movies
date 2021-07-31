@@ -7,7 +7,7 @@ import { useRouteMatch } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const Reviews = () => {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
     const { url } = useRouteMatch();
      const { movieId } = useParams();
 
@@ -28,7 +28,7 @@ const Reviews = () => {
   console.log(movies)
   return (
     <div>
-          {!movies === [] ?
+          {movies.length > 0  ?
               <ul> 
                   {movies.map(movie => (
                       <li key={movie.id}>
